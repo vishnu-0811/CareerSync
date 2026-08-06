@@ -315,9 +315,56 @@ def _inject_persistent_styles(stylesheet_version: str) -> None:
     }});
   }}
 
+  function setupCustomNavigation() {
+    function handleNavClick(e) {
+      var anchor = e.target.closest('a[href]');
+      if (!anchor) return;
+
+      var href = anchor.getAttribute("href");
+      if (!href) return;
+
+      var targetPage = null;
+      if (href.indexOf("1_Resume_Classifier") !== -1) {
+        targetPage = "1_Resume_Classifier";
+      } else if (href.indexOf("2_Job_Fit_Analyzer") !== -1) {
+        targetPage = "2_Job_Fit_Analyzer";
+      } else if (href.indexOf("4_Dashboard") !== -1) {
+        targetPage = "4_Dashboard";
+      }
+
+      if (targetPage) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var targetLink = null;
+        var sidebarLinks = doc.querySelectorAll('[data-testid="stSidebarNavLink"]');
+        for (var i = 0; i < sidebarLinks.length; i++) {
+          var sLink = sidebarLinks[i];
+          var sHref = sLink.getAttribute("href") || "";
+          if (sHref.indexOf(targetPage) !== -1) {
+            targetLink = sLink;
+            break;
+          }
+        }
+
+        if (targetLink) {
+          targetLink.click();
+        } else {
+          window.parent.location.href = href;
+        }
+      }
+    }
+
+    doc.removeEventListener("click", handleNavClick);
+    doc.addEventListener("click", handleNavClick);
+    document.removeEventListener("click", handleNavClick);
+    document.addEventListener("click", handleNavClick);
+  }
+
   upsertStyle("pg-critical-styles", payload.critical);
   upsertStylesheet("pg-app-stylesheet-link", payload.href);
   syncMainPageLabel();
+  setupCustomNavigation();
   function markStylesReady(targetDoc) {{
     if (targetDoc && targetDoc.documentElement) {{
       targetDoc.documentElement.classList.add("pg-styles-ready");
