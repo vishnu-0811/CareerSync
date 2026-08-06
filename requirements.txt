@@ -1,0 +1,12 @@
+streamlit
+numpy
+pandas
+scikit-learn==1.7.0
+joblib
+seaborn
+matplotlib
+pymupdf
+spacy
+./wheels/en_core_web_sm-3.8.0-py3-none-any.whl
+tensorflow
+msvc-runtime; sys_platform == "win32"

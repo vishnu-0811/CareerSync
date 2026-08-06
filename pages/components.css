@@ -1,0 +1,785 @@
+/* =========================================================
+   CareerSync Shared UI Components
+   Streamlit widgets + HTML utility classes · Light theme only
+   Uses --pg-* tokens from design_tokens.css
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Shared control transitions
+   --------------------------------------------------------- */
+.stApp button,
+.stApp input,
+.stApp textarea,
+.stApp select,
+.stApp [data-baseweb="select"] > div,
+.stApp [data-baseweb="popover"] {
+  transition:
+    background var(--pg-duration-fast) var(--pg-ease-standard),
+    border-color var(--pg-duration-fast) var(--pg-ease-standard),
+    color var(--pg-duration-fast) var(--pg-ease-standard),
+    box-shadow var(--pg-duration-fast) var(--pg-ease-standard),
+    transform var(--pg-duration-fast) var(--pg-ease-standard);
+}
+
+/* ---------------------------------------------------------
+   Form labels
+   --------------------------------------------------------- */
+.stApp [data-testid="stWidgetLabel"] p,
+.stApp [data-testid="stWidgetLabel"] label {
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  font-weight: var(--pg-font-medium) !important;
+  color: var(--pg-text-heading) !important;
+  letter-spacing: var(--pg-tracking-normal);
+  line-height: var(--pg-leading-snug) !important;
+  margin-bottom: var(--pg-space-1) !important;
+}
+
+.stApp [data-testid="stWidgetLabel"] [data-testid="stMarkdownContainer"] p {
+  font-size: var(--pg-text-sm) !important;
+}
+
+/* ---------------------------------------------------------
+   Buttons — Primary / Secondary / Outline / Ghost / Danger
+   Streamlit: kind="primary" | kind="secondary"
+   HTML utilities: .pg-btn-*
+   --------------------------------------------------------- */
+.stApp [data-testid="stButton"] > button,
+.stApp [data-testid="stFormSubmitButton"] > button,
+.pg-btn,
+.cta-button {
+  min-height: 2.5rem;
+  padding: 0.55rem 1.15rem !important;
+  border-radius: var(--pg-radius-lg) !important;
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  font-weight: var(--pg-font-semibold) !important;
+  letter-spacing: 0.01em;
+  line-height: 1.2 !important;
+  box-shadow: var(--pg-shadow-xs) !important;
+  border: 1px solid transparent !important;
+}
+
+/* Primary (Streamlit default action + .pg-btn-primary) */
+.stApp [data-testid="stButton"] > button[kind="primary"],
+.stApp [data-testid="stFormSubmitButton"] > button[kind="primary"],
+.pg-btn-primary,
+.cta-button {
+  background: var(--pg-primary) !important;
+  color: var(--pg-on-primary) !important;
+  border-color: var(--pg-primary) !important;
+}
+
+.stApp [data-testid="stButton"] > button[kind="primary"]:hover,
+.stApp [data-testid="stFormSubmitButton"] > button[kind="primary"]:hover,
+.pg-btn-primary:hover,
+.cta-button:hover {
+  background: var(--pg-primary-hover) !important;
+  border-color: var(--pg-primary-hover) !important;
+  box-shadow: var(--pg-shadow-sm) !important;
+  transform: translateY(-1px);
+}
+
+.stApp [data-testid="stButton"] > button[kind="primary"]:active,
+.pg-btn-primary:active,
+.cta-button:active {
+  background: var(--pg-primary-active) !important;
+  transform: translateY(0);
+}
+
+/* Secondary (Streamlit default for st.button) */
+.stApp [data-testid="stButton"] > button[kind="secondary"],
+.stApp [data-testid="stButton"] > button:not([kind="primary"]),
+.stApp [data-testid="stFormSubmitButton"] > button[kind="secondary"],
+.pg-btn-secondary {
+  background: var(--pg-surface) !important;
+  color: var(--pg-text-heading) !important;
+  border-color: var(--pg-border) !important;
+}
+
+.stApp [data-testid="stButton"] > button[kind="secondary"]:hover,
+.stApp [data-testid="stButton"] > button:not([kind="primary"]):hover,
+.pg-btn-secondary:hover {
+  background: var(--pg-bg-subtle) !important;
+  border-color: var(--pg-border-strong) !important;
+  box-shadow: var(--pg-shadow-sm) !important;
+}
+
+/* Outline */
+.pg-btn-outline {
+  background: transparent !important;
+  color: var(--pg-primary) !important;
+  border-color: var(--pg-primary) !important;
+  box-shadow: none !important;
+}
+
+.pg-btn-outline:hover {
+  background: var(--pg-primary-soft) !important;
+  box-shadow: var(--pg-shadow-xs) !important;
+}
+
+/* Ghost */
+.pg-btn-ghost {
+  background: transparent !important;
+  color: var(--pg-text-body) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.pg-btn-ghost:hover {
+  background: var(--pg-bg-subtle) !important;
+  color: var(--pg-text-heading) !important;
+}
+
+/* Danger */
+.pg-btn-danger {
+  background: var(--pg-error) !important;
+  color: var(--pg-on-error) !important;
+  border-color: var(--pg-error) !important;
+}
+
+.pg-btn-danger:hover {
+  background: var(--pg-error-700) !important;
+  border-color: var(--pg-error-700) !important;
+}
+
+/* Icon buttons */
+.pg-btn-icon,
+.stApp button[kind="header"] {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0 !important;
+  border-radius: var(--pg-radius-lg) !important;
+}
+
+/* Focus + disabled (all buttons) */
+.stApp [data-testid="stButton"] > button:focus-visible,
+.stApp [data-testid="stFormSubmitButton"] > button:focus-visible,
+.pg-btn:focus-visible,
+.cta-button:focus-visible {
+  outline: 2px solid var(--pg-border-focus) !important;
+  outline-offset: 2px !important;
+  box-shadow: var(--pg-shadow-focus) !important;
+}
+
+.stApp [data-testid="stButton"] > button:disabled,
+.stApp [data-testid="stFormSubmitButton"] > button:disabled,
+.pg-btn:disabled {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Loading — spinner near buttons / global */
+.stApp [data-testid="stSpinner"] {
+  border-color: var(--pg-primary-muted) !important;
+  border-top-color: var(--pg-primary) !important;
+}
+
+.stApp [data-testid="stSpinner"] + div,
+.stApp .stSpinner > div {
+  color: var(--pg-text-muted);
+  font-size: var(--pg-text-sm);
+  font-family: var(--pg-font-sans);
+}
+
+.pg-btn-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.pg-btn-loading::after {
+  content: "";
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: var(--pg-neutral-0);
+  border-radius: var(--pg-radius-full);
+  animation: pg-spin 0.8s linear infinite;
+}
+
+@keyframes pg-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------------------------------------------------------
+   Text / password / search / textarea / number / date inputs
+   --------------------------------------------------------- */
+.stApp [data-testid="stTextInput"] input,
+.stApp [data-testid="stNumberInput"] input,
+.stApp [data-testid="stDateInput"] input,
+.stApp [data-testid="stTimeInput"] input,
+.stApp [data-testid="stTextArea"] textarea,
+.pg-input,
+.pg-textarea {
+  background: var(--pg-surface) !important;
+  color: var(--pg-text-body) !important;
+  border: 1px solid var(--pg-border) !important;
+  border-radius: var(--pg-radius-lg) !important;
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  line-height: var(--pg-leading-normal) !important;
+  box-shadow: var(--pg-shadow-xs) !important;
+  min-height: 2.5rem;
+}
+
+.stApp [data-testid="stTextInput"] input:hover,
+.stApp [data-testid="stNumberInput"] input:hover,
+.stApp [data-testid="stTextArea"] textarea:hover,
+.pg-input:hover,
+.pg-textarea:hover {
+  border-color: var(--pg-border-strong) !important;
+}
+
+.stApp [data-testid="stTextInput"] input:focus,
+.stApp [data-testid="stNumberInput"] input:focus,
+.stApp [data-testid="stTextArea"] textarea:focus,
+.pg-input:focus,
+.pg-textarea:focus {
+  border-color: var(--pg-border-focus) !important;
+  box-shadow: var(--pg-shadow-focus) !important;
+  outline: none !important;
+}
+
+.stApp [data-testid="stTextInput"] input::placeholder,
+.stApp [data-testid="stTextArea"] textarea::placeholder,
+.pg-input::placeholder {
+  color: var(--pg-text-subtle) !important;
+}
+
+.stApp [data-testid="stTextInput"] input:disabled,
+.stApp [data-testid="stNumberInput"] input:disabled,
+.stApp [data-testid="stTextArea"] textarea:disabled {
+  background: var(--pg-bg-subtle) !important;
+  color: var(--pg-text-disabled) !important;
+  cursor: not-allowed;
+}
+
+.stApp [data-testid="stTextArea"] textarea {
+  min-height: 7rem;
+  padding-top: var(--pg-space-3) !important;
+  resize: vertical;
+}
+
+/* Number input steppers */
+.stApp [data-testid="stNumberInput"] button {
+  border-radius: var(--pg-radius-md) !important;
+  border-color: var(--pg-border) !important;
+  background: var(--pg-surface) !important;
+  color: var(--pg-text-muted) !important;
+}
+
+.stApp [data-testid="stNumberInput"] button:hover {
+  background: var(--pg-bg-subtle) !important;
+  color: var(--pg-text-heading) !important;
+  border-color: var(--pg-border-strong) !important;
+}
+
+/* Search utility */
+.pg-input-search {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='5'/%3E%3Cpath d='M16 16l-3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.75rem center;
+  padding-left: 2.35rem !important;
+}
+
+/* ---------------------------------------------------------
+   File upload
+   --------------------------------------------------------- */
+.stApp [data-testid="stFileUploader"] {
+  background: var(--pg-surface);
+  border: 1px dashed var(--pg-border-strong);
+  border-radius: var(--pg-radius-xl);
+  padding: var(--pg-space-4);
+  box-shadow: var(--pg-shadow-xs);
+  transition:
+    border-color var(--pg-duration-normal) var(--pg-ease-standard),
+    background var(--pg-duration-normal) var(--pg-ease-standard),
+    box-shadow var(--pg-duration-normal) var(--pg-ease-standard);
+}
+
+.stApp [data-testid="stFileUploader"]:hover {
+  border-color: var(--pg-primary);
+  background: var(--pg-primary-soft);
+  box-shadow: var(--pg-shadow-sm);
+}
+
+.stApp [data-testid="stFileUploader"] section[data-testid="stFileUploadDropzone"] {
+  border: none !important;
+  background: transparent !important;
+}
+
+.stApp [data-testid="stFileUploader"] button {
+  border-radius: var(--pg-radius-lg) !important;
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  font-weight: var(--pg-font-medium) !important;
+}
+
+.stApp [data-testid="stFileUploader"] [data-testid="stMarkdownContainer"] p {
+  color: var(--pg-text-muted) !important;
+  font-size: var(--pg-text-sm) !important;
+}
+
+/* ---------------------------------------------------------
+   Dropdown / multi-select (BaseWeb)
+   --------------------------------------------------------- */
+.stApp [data-testid="stSelectbox"] [data-baseweb="select"] > div,
+.stApp [data-testid="stMultiSelect"] [data-baseweb="select"] > div,
+.pg-select {
+  background: var(--pg-surface) !important;
+  border: 1px solid var(--pg-border) !important;
+  border-radius: var(--pg-radius-lg) !important;
+  min-height: 2.5rem !important;
+  box-shadow: var(--pg-shadow-xs) !important;
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+}
+
+.stApp [data-testid="stSelectbox"] [data-baseweb="select"] > div:hover,
+.stApp [data-testid="stMultiSelect"] [data-baseweb="select"] > div:hover {
+  border-color: var(--pg-border-strong) !important;
+}
+
+.stApp [data-testid="stSelectbox"] [data-baseweb="select"] > div:focus-within,
+.stApp [data-testid="stMultiSelect"] [data-baseweb="select"] > div:focus-within {
+  border-color: var(--pg-border-focus) !important;
+  box-shadow: var(--pg-shadow-focus) !important;
+}
+
+.stApp [data-testid="stMultiSelect"] span[data-baseweb="tag"] {
+  background: var(--pg-primary-soft) !important;
+  color: var(--pg-primary-700) !important;
+  border: 1px solid color-mix(in srgb, var(--pg-primary) 25%, transparent) !important;
+  border-radius: var(--pg-radius-md) !important;
+  font-size: var(--pg-text-xs) !important;
+  font-weight: var(--pg-font-medium) !important;
+}
+
+.stApp [data-baseweb="popover"] {
+  border-radius: var(--pg-radius-lg) !important;
+  border: 1px solid var(--pg-border) !important;
+  box-shadow: var(--pg-shadow-lg) !important;
+  overflow: hidden;
+}
+
+.stApp [data-baseweb="menu"] li {
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  color: var(--pg-text-body) !important;
+}
+
+.stApp [data-baseweb="menu"] li:hover,
+.stApp [data-baseweb="menu"] li[aria-selected="true"] {
+  background: var(--pg-primary-soft) !important;
+  color: var(--pg-primary-700) !important;
+}
+
+/* ---------------------------------------------------------
+   Checkbox / radio / toggle / slider
+   --------------------------------------------------------- */
+.stApp [data-testid="stCheckbox"] label span,
+.stApp [data-testid="stRadio"] label span {
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  color: var(--pg-text-body) !important;
+}
+
+.stApp [data-testid="stCheckbox"] input[type="checkbox"],
+.stApp [data-testid="stRadio"] input[type="radio"] {
+  accent-color: var(--pg-primary);
+}
+
+.stApp [data-testid="stToggle"] label span {
+  font-size: var(--pg-text-sm) !important;
+  color: var(--pg-text-body) !important;
+}
+
+.stApp [data-testid="stSlider"] [data-baseweb="slider"] div[role="slider"] {
+  background: var(--pg-primary) !important;
+}
+
+.stApp [data-testid="stSlider"] [data-baseweb="slider"] div[data-testid="stTickBar"] > div {
+  background: var(--pg-primary) !important;
+}
+
+/* ---------------------------------------------------------
+   Cards — dashboard / info / stat / action
+   --------------------------------------------------------- */
+.pg-card,
+.feature-card,
+.testimonial-card,
+.info-box,
+.cta-section,
+.hero-section,
+.stats-container {
+  font-family: var(--pg-font-sans);
+}
+
+.pg-card,
+.pg-card-info {
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  padding: var(--pg-space-6);
+  box-shadow: var(--pg-shadow-sm);
+}
+
+.pg-card-stat,
+.stat-item {
+  text-align: center;
+}
+
+.pg-card-action,
+.feature-card {
+  cursor: default;
+}
+
+.pg-card-header {
+  font-size: var(--pg-text-lg);
+  font-weight: var(--pg-font-semibold);
+  color: var(--pg-text-heading);
+  margin-bottom: var(--pg-space-3);
+}
+
+.pg-card-body {
+  color: var(--pg-text-body);
+  font-size: var(--pg-text-sm);
+  line-height: var(--pg-leading-relaxed);
+}
+
+/* ---------------------------------------------------------
+   Feedback — alerts / messages / progress / loading / skeleton
+   --------------------------------------------------------- */
+.stApp [data-testid="stAlert"] {
+  border-radius: var(--pg-radius-lg) !important;
+  border: 1px solid var(--pg-border) !important;
+  padding: var(--pg-space-4) var(--pg-space-5) !important;
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  line-height: var(--pg-leading-relaxed) !important;
+  box-shadow: var(--pg-shadow-xs) !important;
+}
+
+.stApp [data-testid="stAlert"] [data-testid="stMarkdownContainer"] p {
+  font-size: var(--pg-text-sm) !important;
+  margin: 0 !important;
+}
+
+/* Success */
+.stApp [data-testid="stAlert"][data-baseweb="notification"],
+.stApp div[data-testid="stNotification"][kind="success"],
+.stApp [data-testid="stAlert"]:has(svg[aria-label="Success"]) {
+  background: var(--pg-success-soft) !important;
+  border-color: var(--pg-success-border) !important;
+  color: var(--pg-success-700) !important;
+}
+
+/* Warning */
+.stApp div[data-testid="stNotification"][kind="warning"],
+.stApp [data-testid="stAlert"]:has(svg[aria-label="Warning"]) {
+  background: var(--pg-warning-soft) !important;
+  border-color: var(--pg-warning-border) !important;
+  color: var(--pg-warning-700) !important;
+}
+
+/* Error */
+.stApp div[data-testid="stNotification"][kind="error"],
+.stApp [data-testid="stAlert"]:has(svg[aria-label="Error"]) {
+  background: var(--pg-error-soft) !important;
+  border-color: var(--pg-error-border) !important;
+  color: var(--pg-error-700) !important;
+}
+
+/* Info */
+.stApp div[data-testid="stNotification"][kind="info"],
+.stApp [data-testid="stAlert"]:has(svg[aria-label="Info"]) {
+  background: var(--pg-info-soft) !important;
+  border-color: var(--pg-info-border) !important;
+  color: var(--pg-info-700) !important;
+}
+
+/* Progress */
+.stApp [data-testid="stProgress"] > div > div > div {
+  background: var(--pg-neutral-100) !important;
+  border-radius: var(--pg-radius-full) !important;
+  overflow: hidden;
+  height: 0.5rem !important;
+}
+
+.stApp [data-testid="stProgress"] > div > div > div > div {
+  background: var(--pg-primary) !important;
+  border-radius: var(--pg-radius-full) !important;
+}
+
+.progress-bar {
+  background: var(--pg-neutral-100);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-full);
+}
+
+.progress-fill {
+  background: var(--pg-primary);
+  border-radius: var(--pg-radius-full);
+}
+
+/* Skeleton */
+.pg-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--pg-neutral-100) 25%,
+    var(--pg-neutral-200) 37%,
+    var(--pg-neutral-100) 63%
+  );
+  background-size: 400% 100%;
+  animation: pg-shimmer 1.4s ease infinite;
+  border-radius: var(--pg-radius-md);
+  min-height: 1rem;
+}
+
+@keyframes pg-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.pg-empty-state {
+  text-align: center;
+  padding: var(--pg-space-10) var(--pg-space-6);
+  color: var(--pg-text-muted);
+  font-size: var(--pg-text-sm);
+  border: 1px dashed var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  background: var(--pg-surface);
+}
+
+/* ---------------------------------------------------------
+   Containers — panels / sections / dividers / groups / expanders
+   --------------------------------------------------------- */
+.pg-panel,
+.pg-section,
+.pg-group {
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  padding: var(--pg-space-6);
+  margin-bottom: var(--pg-space-6);
+  box-shadow: var(--pg-shadow-xs);
+}
+
+.pg-section-title-sm {
+  font-size: var(--pg-text-xs);
+  font-weight: var(--pg-font-semibold);
+  letter-spacing: var(--pg-tracking-wider);
+  text-transform: uppercase;
+  color: var(--pg-text-muted);
+  margin-bottom: var(--pg-space-3);
+}
+
+.pg-divider,
+hr {
+  border: none;
+  height: 1px;
+  background: var(--pg-border);
+  margin: var(--pg-space-6) 0;
+}
+
+.stApp [data-testid="stExpander"] {
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border) !important;
+  border-radius: var(--pg-radius-lg) !important;
+  box-shadow: var(--pg-shadow-xs);
+  overflow: hidden;
+}
+
+.stApp [data-testid="stExpander"] summary,
+.stApp [data-testid="stExpander"] [data-testid="stMarkdownContainer"] p {
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  font-weight: var(--pg-font-medium) !important;
+  color: var(--pg-text-heading) !important;
+}
+
+.stApp [data-testid="stExpander"] details[open] {
+  border-top: 1px solid var(--pg-border);
+}
+
+/* ---------------------------------------------------------
+   Navigation — tabs / pills / pagination / breadcrumbs (style)
+   --------------------------------------------------------- */
+.stApp [data-testid="stTabs"] button {
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+  font-weight: var(--pg-font-medium) !important;
+  color: var(--pg-text-muted) !important;
+  border-radius: var(--pg-radius-lg) var(--pg-radius-lg) 0 0 !important;
+  padding: var(--pg-space-3) var(--pg-space-4) !important;
+  transition:
+    color var(--pg-duration-fast) var(--pg-ease-standard),
+    background var(--pg-duration-fast) var(--pg-ease-standard);
+}
+
+.stApp [data-testid="stTabs"] button[aria-selected="true"] {
+  color: var(--pg-primary) !important;
+  border-bottom: 2px solid var(--pg-primary) !important;
+  font-weight: var(--pg-font-semibold) !important;
+}
+
+.stApp [data-testid="stTabs"] button:hover {
+  color: var(--pg-text-heading) !important;
+  background: var(--pg-bg-subtle) !important;
+}
+
+.pg-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pg-space-2);
+}
+
+.pg-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--pg-radius-full);
+  border: 1px solid var(--pg-border);
+  background: var(--pg-surface);
+  color: var(--pg-text-body);
+  font-size: var(--pg-text-xs);
+  font-weight: var(--pg-font-medium);
+  text-decoration: none;
+  transition:
+    background var(--pg-duration-fast) var(--pg-ease-standard),
+    border-color var(--pg-duration-fast) var(--pg-ease-standard),
+    color var(--pg-duration-fast) var(--pg-ease-standard);
+}
+
+.pg-pill:hover {
+  background: var(--pg-primary-soft);
+  border-color: color-mix(in srgb, var(--pg-primary) 30%, transparent);
+  color: var(--pg-primary-700);
+}
+
+.pg-pill-active {
+  background: var(--pg-primary-soft);
+  border-color: color-mix(in srgb, var(--pg-primary) 35%, transparent);
+  color: var(--pg-primary-700);
+  font-weight: var(--pg-font-semibold);
+}
+
+.pg-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--pg-space-1);
+}
+
+.pg-pagination-btn {
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-md);
+  background: var(--pg-surface);
+  color: var(--pg-text-body);
+  font-size: var(--pg-text-sm);
+  font-weight: var(--pg-font-medium);
+}
+
+.pg-pagination-btn:hover:not(:disabled) {
+  background: var(--pg-bg-subtle);
+  border-color: var(--pg-border-strong);
+}
+
+.pg-pagination-btn-active {
+  background: var(--pg-primary);
+  border-color: var(--pg-primary);
+  color: var(--pg-on-primary);
+}
+
+/* ---------------------------------------------------------
+   Overlays — dialog / modal / popover / tooltip / dropdown menus
+   --------------------------------------------------------- */
+.stApp [data-testid="stDialog"],
+.stApp [data-testid="stModal"],
+.pg-dialog {
+  border-radius: var(--pg-radius-xl) !important;
+  border: 1px solid var(--pg-border) !important;
+  box-shadow: var(--pg-shadow-xl) !important;
+  background: var(--pg-surface) !important;
+  font-family: var(--pg-font-sans);
+}
+
+.stApp [data-testid="stDialog"] header,
+.stApp [data-testid="stModal"] header {
+  border-bottom: 1px solid var(--pg-border);
+  padding: var(--pg-space-4) var(--pg-space-6);
+}
+
+.stApp [data-testid="stTooltipIcon"] {
+  color: var(--pg-text-muted);
+}
+
+.stApp [data-testid="stTooltipIcon"]:hover {
+  color: var(--pg-primary);
+}
+
+/* Data table (dashboard) */
+.stApp [data-testid="stDataFrame"] {
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--pg-shadow-xs);
+}
+
+.stApp [data-testid="stDataFrame"] div[data-testid="stTable"] {
+  font-family: var(--pg-font-sans) !important;
+  font-size: var(--pg-text-sm) !important;
+}
+
+/* Widget vertical rhythm */
+.stApp [data-testid="stVerticalBlock"] > div {
+  gap: 0.35rem;
+}
+
+.stApp [data-testid="stMain"] [data-testid="stVerticalBlockBorderWrapper"] {
+  margin-bottom: var(--pg-space-4);
+}
+
+/* ---------------------------------------------------------
+   Responsive component tweaks
+   --------------------------------------------------------- */
+@media (max-width: 768px) {
+  .stApp [data-testid="stButton"] > button,
+  .stApp [data-testid="stFormSubmitButton"] > button {
+    width: 100%;
+  }
+
+  .stApp [data-testid="stFileUploader"] {
+    padding: var(--pg-space-3);
+  }
+
+  .pg-panel,
+  .pg-section,
+  .pg-group {
+    padding: var(--pg-space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stApp button,
+  .stApp input,
+  .stApp textarea,
+  .pg-skeleton,
+  .feature-card,
+  .pg-pill {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,209 @@
+/* =========================================================
+   CareerSync — Resume Cluster Page
+   Extends classifier.css feature-page patterns · .pg-cluster scope
+   ========================================================= */
+
+.pg-cluster.pg-classifier {
+  margin-top: calc(var(--pg-space-2) * -1);
+}
+
+/* Upload-only form — file uploader closes the panel */
+.pg-cluster.pg-classifier .pg-cl-form-intro ~ div[data-testid="stVerticalBlockBorderWrapper"]:has([data-testid="stFileUploader"]) {
+  padding-top: var(--pg-space-4);
+  padding-bottom: var(--pg-space-6);
+  margin-bottom: var(--pg-space-8);
+  border-bottom: 1px solid var(--pg-border);
+  border-radius: 0 0 var(--pg-radius-xl) var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-xs);
+}
+
+.pg-cluster.pg-classifier .pg-cl-form-intro ~ div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stFileUploader"] {
+  padding-left: var(--pg-space-6);
+  padding-right: var(--pg-space-6);
+  background: var(--pg-surface);
+  border-left: 1px solid var(--pg-border);
+  border-right: 1px solid var(--pg-border);
+}
+
+@media (max-width: 640px) {
+  .pg-cluster.pg-classifier .pg-cl-form-intro ~ div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stFileUploader"] {
+    padding-left: var(--pg-space-4);
+    padding-right: var(--pg-space-4);
+  }
+}
+
+/* ---------------------------------------------------------
+   Results / output
+   --------------------------------------------------------- */
+.pg-rc-results {
+  animation: pg-cl-fade-in var(--pg-duration-normal) var(--pg-ease-standard);
+}
+
+.pg-rc-upload-ok {
+  display: flex;
+  align-items: center;
+  gap: var(--pg-space-3);
+  padding: var(--pg-space-4) var(--pg-space-5);
+  margin-bottom: var(--pg-space-6);
+  border-radius: var(--pg-radius-lg);
+  border: 1px solid var(--pg-success-border);
+  background: var(--pg-success-soft);
+  color: var(--pg-success-700);
+  font-size: var(--pg-text-sm);
+  font-weight: var(--pg-font-medium);
+}
+
+.pg-rc-upload-ok svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.pg-rc-clusters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--pg-space-4);
+}
+
+.pg-rc-cluster-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pg-space-3);
+  padding: var(--pg-space-5);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-xs);
+  overflow: hidden;
+  transition:
+    transform var(--pg-duration-normal) var(--pg-ease-standard),
+    box-shadow var(--pg-duration-normal) var(--pg-ease-standard),
+    border-color var(--pg-duration-normal) var(--pg-ease-standard);
+}
+
+.pg-rc-cluster-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--pg-primary);
+  opacity: 0.85;
+}
+
+.pg-rc-cluster-card.rank-1::before {
+  background: var(--pg-primary);
+}
+
+.pg-rc-cluster-card.rank-2::before {
+  background: var(--pg-primary-400);
+}
+
+.pg-rc-cluster-card.rank-3::before {
+  background: var(--pg-neutral-400);
+}
+
+.pg-rc-cluster-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--pg-shadow-md);
+  border-color: var(--pg-border-strong);
+}
+
+.pg-rc-cluster-rank {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--pg-radius-full);
+  background: var(--pg-primary-soft);
+  border: 1px solid color-mix(in srgb, var(--pg-primary) 22%, transparent);
+  font-size: var(--pg-text-2xs);
+  font-weight: var(--pg-font-semibold);
+  letter-spacing: var(--pg-tracking-wider);
+  text-transform: uppercase;
+  color: var(--pg-primary-700);
+}
+
+.pg-rc-cluster-card.rank-2 .pg-rc-cluster-rank {
+  background: var(--pg-bg-subtle);
+  border-color: var(--pg-border);
+  color: var(--pg-text-muted);
+}
+
+.pg-rc-cluster-card.rank-3 .pg-rc-cluster-rank {
+  background: var(--pg-bg-subtle);
+  border-color: var(--pg-border);
+  color: var(--pg-text-muted);
+}
+
+.pg-rc-cluster-id {
+  margin: 0;
+  font-size: var(--pg-text-xs);
+  font-weight: var(--pg-font-semibold);
+  letter-spacing: var(--pg-tracking-wider);
+  text-transform: uppercase;
+  color: var(--pg-text-muted);
+}
+
+.pg-rc-cluster-label {
+  margin: 0;
+  font-size: var(--pg-text-lg);
+  font-weight: var(--pg-font-bold);
+  color: var(--pg-text-heading);
+  line-height: var(--pg-leading-snug);
+  word-break: break-word;
+}
+
+.pg-rc-cluster-score {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--pg-radius-full);
+  background: var(--pg-bg-subtle);
+  border: 1px solid var(--pg-border);
+  font-size: var(--pg-text-sm);
+  font-weight: var(--pg-font-semibold);
+  color: var(--pg-text-heading);
+}
+
+.pg-rc-cluster-score svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--pg-primary);
+}
+
+.pg-rc-empty {
+  text-align: center;
+  padding: var(--pg-space-8) var(--pg-space-4);
+  border: 1px dashed var(--pg-border);
+  border-radius: var(--pg-radius-lg);
+  background: var(--pg-bg-subtle);
+}
+
+.pg-rc-empty-title {
+  margin: 0 0 var(--pg-space-2);
+  font-size: var(--pg-text-md);
+  font-weight: var(--pg-font-semibold);
+  color: var(--pg-text-heading);
+}
+
+.pg-rc-empty-text {
+  margin: 0;
+  font-size: var(--pg-text-sm);
+  color: var(--pg-text-muted);
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .pg-rc-clusters {
+    grid-template-columns: 1fr;
+  }
+}

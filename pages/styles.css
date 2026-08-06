@@ -1,0 +1,365 @@
+/* CareerSync Styles CSS
+   Design tokens: pages/design_tokens.css (injected first).
+   Light theme only — all colors reference --pg-* tokens.
+*/
+
+/* Global Styles */
+.main-container {
+    background: var(--pg-bg);
+    min-height: 100vh;
+    padding: var(--pg-space-8) 0;
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: var(--pg-space-12) var(--pg-space-6);
+    color: var(--pg-text-heading);
+    background: var(--pg-surface);
+    border-radius: var(--pg-radius-2xl);
+    margin-bottom: var(--pg-space-8);
+    border: 1px solid var(--pg-border);
+    box-shadow: var(--pg-shadow-sm);
+}
+
+.hero-section .hero-emoji {
+    font-size: var(--pg-text-5xl);
+    line-height: var(--pg-leading-none);
+}
+
+.hero-lead {
+    color: var(--pg-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.main-title {
+    margin-bottom: var(--pg-space-4);
+    color: var(--pg-primary);
+}
+
+.subtitle {
+    color: var(--pg-text-body);
+    margin-bottom: var(--pg-space-8);
+}
+
+.page-title {
+    color: var(--pg-primary);
+    text-align: center;
+    margin-bottom: var(--pg-space-3);
+}
+
+.page-subtitle,
+.subtext {
+    text-align: center;
+    color: var(--pg-text-muted);
+    margin-bottom: var(--pg-space-8);
+}
+
+.pg-section-title {
+    text-align: center;
+    color: var(--pg-text-heading);
+    margin: var(--pg-space-12) 0 var(--pg-space-8) 0;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: var(--pg-surface);
+    border-radius: var(--pg-radius-xl);
+    padding: var(--pg-space-8);
+    margin: var(--pg-space-4) 0;
+    box-shadow: var(--pg-shadow-sm);
+    transition:
+        transform var(--pg-duration-normal) var(--pg-ease-standard),
+        box-shadow var(--pg-duration-normal) var(--pg-ease-standard);
+    border: 1px solid var(--pg-border);
+    border-left: 4px solid var(--pg-primary);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--pg-shadow-md);
+}
+
+.feature-icon {
+    font-size: var(--pg-text-4xl);
+    margin-bottom: var(--pg-space-4);
+    color: var(--pg-primary);
+}
+
+.feature-title {
+    color: var(--pg-text-heading);
+    margin-bottom: var(--pg-space-4);
+}
+
+.feature-description {
+    color: var(--pg-text-body);
+}
+
+/* Stats Section */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    background: var(--pg-surface);
+    border-radius: var(--pg-radius-xl);
+    padding: var(--pg-space-8);
+    margin: var(--pg-space-8) 0;
+    box-shadow: var(--pg-shadow-sm);
+    border: 1px solid var(--pg-border);
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--pg-space-4);
+}
+
+.stat-number {
+    color: var(--pg-primary);
+    display: block;
+}
+
+.stat-label {
+    color: var(--pg-text-muted);
+    margin-top: var(--pg-space-2);
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    padding: var(--pg-space-12) var(--pg-space-6);
+    background: var(--pg-surface);
+    border-radius: var(--pg-radius-2xl);
+    margin-top: var(--pg-space-8);
+    border: 1px solid var(--pg-border);
+    box-shadow: var(--pg-shadow-sm);
+}
+
+.cta-section h2 {
+    color: var(--pg-text-heading) !important;
+    margin-bottom: var(--pg-space-4);
+}
+
+.cta-section p,
+.cta-lead {
+    color: var(--pg-text-muted) !important;
+    margin-bottom: var(--pg-space-8);
+}
+
+.cta-button {
+    background: var(--pg-primary);
+    color: var(--pg-on-primary);
+    padding: var(--pg-space-4) var(--pg-space-8);
+    border: none;
+    border-radius: var(--pg-radius-full);
+    cursor: pointer;
+    transition:
+        background var(--pg-duration-normal) var(--pg-ease-standard),
+        box-shadow var(--pg-duration-normal) var(--pg-ease-standard),
+        transform var(--pg-duration-normal) var(--pg-ease-standard);
+    text-decoration: none;
+    display: inline-block;
+    margin: var(--pg-space-4);
+    box-shadow: var(--pg-shadow-sm);
+}
+
+.cta-button:hover {
+    background: var(--pg-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--pg-shadow-md);
+}
+
+/* Info Box */
+.info-box {
+    background: var(--pg-primary);
+    color: var(--pg-on-primary);
+    padding: var(--pg-space-6);
+    border-radius: var(--pg-radius-xl);
+    margin: var(--pg-space-8) 0;
+    border: 1px solid var(--pg-primary-700);
+    box-shadow: var(--pg-shadow-sm);
+}
+
+.info-box h3,
+.info-box p,
+.info-box li,
+.info-box strong {
+    color: var(--pg-on-primary);
+}
+
+/* How-it-works steps */
+.pg-step {
+    text-align: center;
+    color: var(--pg-text-body);
+    padding: var(--pg-space-4);
+}
+
+.pg-step-icon {
+    font-size: var(--pg-text-4xl);
+    margin-bottom: var(--pg-space-4);
+    line-height: var(--pg-leading-none);
+}
+
+.pg-step-title {
+    color: var(--pg-primary) !important;
+    font-size: var(--pg-text-xl);
+    font-weight: var(--pg-font-semibold);
+    margin-bottom: var(--pg-space-2);
+}
+
+.pg-step p {
+    color: var(--pg-text-muted);
+    font-size: var(--pg-text-md);
+    line-height: var(--pg-leading-normal);
+    margin: 0;
+}
+
+/* Testimonials */
+.testimonial-card {
+    background: var(--pg-surface);
+    border-radius: var(--pg-radius-xl);
+    padding: var(--pg-space-8);
+    margin: var(--pg-space-4);
+    box-shadow: var(--pg-shadow-sm);
+    text-align: center;
+    border: 1px solid var(--pg-border);
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--pg-text-body);
+    margin-bottom: var(--pg-space-4);
+    font-size: var(--pg-text-lg);
+    line-height: var(--pg-leading-relaxed);
+}
+
+.testimonial-author {
+    font-weight: var(--pg-font-semibold);
+    color: var(--pg-primary);
+}
+
+/* Animations */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Gradient Text → primary brand (light theme) */
+.gradient-text {
+    color: var(--pg-primary);
+    font-weight: var(--pg-font-semibold);
+    background: none;
+    -webkit-text-fill-color: unset;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: var(--pg-text-3xl);
+    }
+
+    .stats-container {
+        flex-direction: column;
+        gap: var(--pg-space-4);
+    }
+
+    .feature-card {
+        margin: var(--pg-space-2) 0;
+        padding: var(--pg-space-6);
+    }
+
+    .hero-section {
+        padding: var(--pg-space-8) var(--pg-space-4);
+    }
+
+    .pg-section-title {
+        font-size: var(--pg-text-2xl);
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: var(--pg-text-inverse);
+}
+
+.text-gradient {
+    color: var(--pg-primary);
+    font-weight: var(--pg-font-semibold);
+    background: none;
+    -webkit-text-fill-color: unset;
+}
+
+.card-hover {
+    transition:
+        transform var(--pg-duration-normal) var(--pg-ease-standard),
+        box-shadow var(--pg-duration-normal) var(--pg-ease-standard);
+}
+
+.card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--pg-shadow-md);
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--pg-primary-muted);
+    border-radius: var(--pg-radius-full);
+    border-top-color: var(--pg-primary);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--pg-neutral-100);
+    border-radius: var(--pg-radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--pg-border);
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--pg-primary);
+    border-radius: var(--pg-radius-sm);
+    transition: width var(--pg-duration-slow) var(--pg-ease-standard);
+}
+
+/* Surface helpers (token-based; replaces old glass / purple gradients) */
+.glass-effect {
+    background: var(--pg-surface);
+    border: 1px solid var(--pg-border);
+    border-radius: var(--pg-radius-xl);
+    box-shadow: var(--pg-shadow-xs);
+}
+
+.gradient-bg-1,
+.gradient-bg-2,
+.gradient-bg-3 {
+    background: var(--pg-primary-soft);
+    border: 1px solid var(--pg-border);
+}

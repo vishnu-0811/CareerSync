@@ -1,0 +1,197 @@
+/* =========================================================
+   CareerSync — Job Fit Analyzer Page
+   Extends classifier.css feature-page patterns · .pg-jobfit scope
+   ========================================================= */
+
+.pg-jobfit.pg-classifier {
+  margin-top: calc(var(--pg-space-2) * -1);
+}
+
+/* Form shell — additional widgets (textarea, number input) */
+.pg-jobfit.pg-classifier .pg-cl-form-intro ~ div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stTextArea"],
+.pg-jobfit.pg-classifier .pg-cl-form-intro ~ div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stNumberInput"] {
+  padding-left: var(--pg-space-6);
+  padding-right: var(--pg-space-6);
+  background: var(--pg-surface);
+  border-left: 1px solid var(--pg-border);
+  border-right: 1px solid var(--pg-border);
+}
+
+@media (max-width: 640px) {
+  .pg-jobfit.pg-classifier .pg-cl-form-intro ~ div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stTextArea"],
+  .pg-jobfit.pg-classifier .pg-cl-form-intro ~ div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stNumberInput"] {
+    padding-left: var(--pg-space-4);
+    padding-right: var(--pg-space-4);
+  }
+}
+
+/* ---------------------------------------------------------
+   Results
+   --------------------------------------------------------- */
+.pg-jf-results {
+  animation: pg-cl-fade-in var(--pg-duration-normal) var(--pg-ease-standard);
+}
+
+.pg-jf-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--pg-space-4);
+  margin-bottom: var(--pg-space-6);
+}
+
+.pg-jf-metric {
+  padding: var(--pg-space-5);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-xs);
+  transition:
+    transform var(--pg-duration-normal) var(--pg-ease-standard),
+    box-shadow var(--pg-duration-normal) var(--pg-ease-standard);
+}
+
+.pg-jf-metric:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pg-shadow-sm);
+}
+
+.pg-jf-metric-head {
+  display: flex;
+  align-items: center;
+  gap: var(--pg-space-2);
+  margin-bottom: var(--pg-space-3);
+}
+
+.pg-jf-metric-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--pg-radius-md);
+  background: var(--pg-primary-soft);
+  color: var(--pg-primary);
+  flex-shrink: 0;
+}
+
+.pg-jf-metric-icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.pg-jf-metric-label {  color: var(--pg-text-muted);
+}
+
+.pg-jf-metric-value {  color: var(--pg-text-heading);
+}
+
+.pg-jf-metric-value.text {  color: var(--pg-text-muted);
+}
+
+.pg-jf-metric-caption {
+  margin-top: var(--pg-space-2);
+  font-size: var(--pg-text-xs);
+  color: var(--pg-text-muted);
+}
+
+/* Experience feedback alert */
+.pg-jf-exp-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pg-space-3);
+  padding: var(--pg-space-4) var(--pg-space-5);
+  margin-bottom: var(--pg-space-6);
+  border-radius: var(--pg-radius-lg);
+  border: 1px solid var(--pg-border);
+  font-size: var(--pg-text-sm);
+  line-height: var(--pg-leading-relaxed);
+}
+
+.pg-jf-exp-alert svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.pg-jf-exp-alert.success {
+  background: var(--pg-success-soft);
+  border-color: var(--pg-success-border);
+  color: var(--pg-success-700);
+}
+
+.pg-jf-exp-alert.warning {
+  background: var(--pg-warning-soft);
+  border-color: var(--pg-warning-border);
+  color: var(--pg-warning-700);
+}
+
+.pg-jf-exp-alert.info {
+  background: var(--pg-info-soft);
+  border-color: var(--pg-info-border);
+  color: var(--pg-info-700);
+}
+
+/* Overall fit score panel */
+.pg-jf-score-panel {
+  padding: var(--pg-space-6);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-sm);
+}
+
+.pg-jf-score-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--pg-space-4);
+  margin-bottom: var(--pg-space-5);
+}
+
+.pg-jf-score-title {
+  margin: 0 0 var(--pg-space-1);
+  color: var(--pg-text-heading);
+}
+
+.pg-jf-score-desc {
+  margin: 0;
+  color: var(--pg-text-muted);
+}
+
+.pg-jf-score-value {  color: var(--pg-primary);
+}
+
+.pg-jf-score-value span {  color: var(--pg-text-muted);
+}
+
+.pg-jf-progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--pg-space-2);
+  font-size: var(--pg-text-xs);
+  font-weight: var(--pg-font-medium);
+  color: var(--pg-text-muted);
+}
+
+.pg-jf-progress-wrap {
+  margin-top: var(--pg-space-2);
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .pg-jf-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .pg-jf-score-panel {
+    padding: var(--pg-space-4);
+  }
+
+.pg-jf-score-value {}
+
+}

@@ -1,0 +1,500 @@
+/* =========================================================
+   CareerSync — Dashboard Page (Model Performance)
+   Scoped to .pg-dashboard · Light theme · tokens only
+   ========================================================= */
+
+.pg-dashboard {
+  font-family: var(--pg-font-sans);
+  color: var(--pg-text-body);
+  margin-top: calc(var(--pg-space-2) * -1);
+}
+
+/* ---------------------------------------------------------
+   Page hero (below global topbar)
+   --------------------------------------------------------- */
+.pg-dash-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--pg-space-4);
+  padding: var(--pg-space-6);
+  margin-bottom: var(--pg-space-6);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-sm);
+}
+
+.pg-dash-hero-main {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+
+.pg-dash-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pg-space-2);
+  padding: 0.2rem 0.65rem;
+  margin-bottom: var(--pg-space-3);
+  border-radius: var(--pg-radius-full);
+  background: var(--pg-primary-soft);
+  border: 1px solid color-mix(in srgb, var(--pg-primary) 22%, transparent);
+  color: var(--pg-primary-700);
+}
+
+.pg-dash-title {
+  margin: 0 0 var(--pg-space-2);
+  color: var(--pg-text-heading);
+}
+
+.pg-dash-subtitle {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--pg-text-muted);
+}
+
+.pg-dash-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pg-space-2);
+  align-items: center;
+}
+
+.pg-dash-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--pg-radius-full);
+  border: 1px solid var(--pg-border);
+  background: var(--pg-bg-subtle);
+  color: var(--pg-text-body);
+}
+
+.pg-dash-badge svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--pg-primary);
+}
+
+/* ---------------------------------------------------------
+   Toolbar / filters
+   --------------------------------------------------------- */
+.pg-dash-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pg-space-4);
+  padding: var(--pg-space-4) var(--pg-space-5);
+  margin-bottom: var(--pg-space-6);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-xs);
+}
+
+.pg-dash-toolbar-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.pg-dash-toolbar-title {
+  font-size: var(--pg-text-sm);
+  font-weight: var(--pg-font-semibold);
+  color: var(--pg-text-heading);
+}
+
+.pg-dash-toolbar-hint {
+  font-size: var(--pg-text-xs);
+  color: var(--pg-text-muted);
+}
+
+/* Streamlit selectbox inside dashboard toolbar */
+.pg-dashboard .pg-dash-toolbar + div[data-testid="stVerticalBlockBorderWrapper"],
+.pg-dashboard div[data-testid="stVerticalBlock"]:has(.pg-dash-toolbar) + div[data-testid="stVerticalBlockBorderWrapper"] {
+  margin-top: calc(var(--pg-space-6) * -1);
+  margin-bottom: var(--pg-space-6);
+  padding: 0 var(--pg-space-5) var(--pg-space-4);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-top: none;
+  border-radius: 0 0 var(--pg-radius-xl) var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-xs);
+}
+
+.pg-dashboard [data-testid="stSelectbox"] {
+  max-width: 22rem;
+}
+
+/* Hide duplicate Streamlit headings inside dashboard sections */
+.pg-dashboard .pg-dash-section-body [data-testid="stHeading"],
+.pg-dashboard [data-testid="stHeading"]:first-of-type {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------
+   KPI stat cards
+   --------------------------------------------------------- */
+.pg-dash-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--pg-space-4);
+  margin-bottom: var(--pg-space-6);
+}
+
+.pg-dash-stat {
+  position: relative;
+  padding: var(--pg-space-5);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-xs);
+  overflow: hidden;
+  transition:
+    transform var(--pg-duration-normal) var(--pg-ease-standard),
+    box-shadow var(--pg-duration-normal) var(--pg-ease-standard),
+    border-color var(--pg-duration-normal) var(--pg-ease-standard);
+}
+
+.pg-dash-stat::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--pg-primary);
+  opacity: 0.85;
+}
+
+.pg-dash-stat:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--pg-shadow-md);
+  border-color: var(--pg-border-strong);
+}
+
+.pg-dash-stat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pg-space-2);
+  margin-bottom: var(--pg-space-3);
+}
+
+.pg-dash-stat-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--pg-radius-lg);
+  background: var(--pg-primary-soft);
+  color: var(--pg-primary);
+  flex-shrink: 0;
+}
+
+.pg-dash-stat-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.pg-dash-stat-trend {
+  font-size: var(--pg-text-2xs);
+  font-weight: var(--pg-font-semibold);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--pg-radius-full);
+  background: var(--pg-success-soft);
+  color: var(--pg-success-700);
+  border: 1px solid var(--pg-success-border);
+}
+
+.pg-dash-stat-trend.neutral {
+  background: var(--pg-bg-subtle);
+  color: var(--pg-text-muted);
+  border-color: var(--pg-border);
+}
+
+.pg-dash-stat-value {  color: var(--pg-text-heading);
+  margin-bottom: var(--pg-space-1);
+}
+
+.pg-dash-stat-label {  color: var(--pg-text-muted);
+}
+
+.pg-dash-stat-caption {
+  margin-top: var(--pg-space-2);
+  font-size: var(--pg-text-xs);
+  color: var(--pg-text-subtle);
+}
+
+/* ---------------------------------------------------------
+   Section cards (charts + table)
+   --------------------------------------------------------- */
+.pg-dash-section {
+  margin-bottom: var(--pg-space-6);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--pg-duration-normal) var(--pg-ease-standard);
+}
+
+.pg-dash-section:hover {
+  box-shadow: var(--pg-shadow-md);
+}
+
+.pg-dash-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pg-space-3);
+  padding: var(--pg-space-5) var(--pg-space-6);
+  border-bottom: 1px solid var(--pg-border);
+  background: linear-gradient(180deg, var(--pg-surface) 0%, var(--pg-bg-subtle) 100%);
+}
+
+.pg-dash-section-title {
+  margin: 0;
+  color: var(--pg-text-heading);
+}
+
+.pg-dash-section-desc {
+  margin: 0.2rem 0 0;
+  color: var(--pg-text-muted);
+}
+
+.pg-dash-section-body {
+  padding: var(--pg-space-5) var(--pg-space-6) var(--pg-space-6);
+}
+
+.pg-dash-section-body.compact {
+  padding-top: var(--pg-space-4);
+}
+
+/* Chart container polish */
+.pg-dashboard [data-testid="stPyplot"] {
+  background: var(--pg-bg-subtle);
+  border: 1px solid var(--pg-border-subtle);
+  border-radius: var(--pg-radius-lg);
+  padding: var(--pg-space-3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.pg-dashboard [data-testid="stPyplot"] img {
+  border-radius: var(--pg-radius-md);
+}
+
+/* Hide redundant Streamlit subheaders inside wrapped sections */
+.pg-dash-section-body [data-testid="stHeading"] {
+  display: none;
+}
+
+/* Accuracy highlight panel */
+.pg-dash-accuracy-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pg-space-4);
+  flex-wrap: wrap;
+  padding: var(--pg-space-5) var(--pg-space-6);
+  background: var(--pg-primary-soft);
+  border: 1px solid color-mix(in srgb, var(--pg-primary) 18%, transparent);
+  border-radius: var(--pg-radius-lg);
+}
+
+.pg-dash-accuracy-label {
+  font-size: var(--pg-text-sm);
+  font-weight: var(--pg-font-medium);
+  color: var(--pg-primary-700);
+}
+
+.pg-dash-accuracy-value {
+  font-size: var(--pg-text-2xl);
+  font-weight: var(--pg-font-bold);
+  color: var(--pg-primary-800);
+  letter-spacing: var(--pg-tracking-tight);
+}
+
+/* Summary widgets row */
+.pg-dash-widgets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--pg-space-4);
+  margin-bottom: var(--pg-space-6);
+}
+
+.pg-dash-widget {
+  padding: var(--pg-space-5);
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-xl);
+  box-shadow: var(--pg-shadow-xs);
+}
+
+.pg-dash-widget-title {
+  display: flex;
+  align-items: center;
+  gap: var(--pg-space-2);
+  margin-bottom: var(--pg-space-3);
+  font-size: var(--pg-text-sm);
+  font-weight: var(--pg-font-semibold);
+  color: var(--pg-text-heading);
+}
+
+.pg-dash-widget-title svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--pg-primary);
+}
+
+.pg-dash-widget-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--pg-space-2);
+}
+
+.pg-dash-widget-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pg-space-2);
+  font-size: var(--pg-text-sm);
+  color: var(--pg-text-body);
+  padding-bottom: var(--pg-space-2);
+  border-bottom: 1px solid var(--pg-border-subtle);
+}
+
+.pg-dash-widget-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pg-dash-widget-list span:last-child {
+  color: var(--pg-text-muted);
+  font-size: var(--pg-text-xs);
+}
+
+.pg-dash-status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--pg-radius-full);
+  background: var(--pg-success);
+  flex-shrink: 0;
+}
+
+/* Table card enhancements */
+.pg-dashboard [data-testid="stDataFrame"] {
+  border: none;
+  border-radius: var(--pg-radius-lg);
+  box-shadow: none;
+}
+
+.pg-dashboard [data-testid="stDataFrame"] [data-testid="stTable"] {
+  border-radius: var(--pg-radius-lg);
+}
+
+.pg-dashboard [data-testid="stDataFrame"] div[data-testid="stTable"] > div {
+  border-color: var(--pg-border) !important;
+}
+
+/* Empty / loading utilities */
+.pg-dash-empty {
+  text-align: center;
+  padding: var(--pg-space-10) var(--pg-space-6);
+  border: 1px dashed var(--pg-border-strong);
+  border-radius: var(--pg-radius-xl);
+  background: var(--pg-bg-subtle);
+}
+
+.pg-dash-empty-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto var(--pg-space-4);
+  border-radius: var(--pg-radius-full);
+  display: grid;
+  place-items: center;
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  color: var(--pg-text-muted);
+}
+
+.pg-dash-empty-title {
+  margin: 0 0 var(--pg-space-2);
+  font-size: var(--pg-text-lg);
+  font-weight: var(--pg-font-semibold);
+  color: var(--pg-text-heading);
+}
+
+.pg-dash-empty-text {
+  margin: 0;
+  font-size: var(--pg-text-sm);
+  color: var(--pg-text-muted);
+  line-height: var(--pg-leading-relaxed);
+}
+
+.pg-dash-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--pg-space-4);
+  margin-bottom: var(--pg-space-6);
+}
+
+.pg-dash-skeleton-card {
+  height: 7.5rem;
+  border-radius: var(--pg-radius-xl);
+  border: 1px solid var(--pg-border);
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .pg-dash-stats,
+  .pg-dash-skeleton-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+.pg-dash-widgets {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .pg-dash-hero,
+  .pg-dash-toolbar,
+  .pg-dash-section-header,
+  .pg-dash-section-body {
+    padding-left: var(--pg-space-4);
+    padding-right: var(--pg-space-4);
+  }
+
+.pg-dash-title {}
+
+
+.pg-dash-stats,
+  .pg-dash-skeleton-grid {
+    grid-template-columns: 1fr;
+  }
+
+.pg-dashboard [data-testid="stSelectbox"] {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-dash-stat,
+  .pg-dash-section {
+    transition: none;
+  }
+
+.pg-dash-stat:hover {
+    transform: none;
+  }
+}

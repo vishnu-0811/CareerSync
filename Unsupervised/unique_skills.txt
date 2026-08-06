@@ -1,0 +1,66 @@
+agile methodology
+ansible
+apis
+aws
+azure
+backup and recovery
+bootstrap
+business analysis
+ci/cd
+cloud security
+computer vision
+content marketing
+cryptography
+css
+data analysis
+data structures
+data visualization
+database design
+deep learning
+django
+docker
+email marketing
+ethical hacking
+excel
+firewall management
+flask
+gcp
+git
+google analytics
+hadoop
+hibernate
+html
+incident response
+java
+javascript
+jenkins
+junit
+kubernetes
+linux
+machine learning
+maven
+network security
+next.js
+nlp
+oop concepts
+oracle
+pandas
+performance tuning
+postgresql
+power bi
+pyspark
+python
+pytorch
+react
+requirement gathering
+responsive design
+sem
+seo
+siem
+social media marketing
+spring boot
+sql
+statistics
+tableau
+tensorflow
+terraform

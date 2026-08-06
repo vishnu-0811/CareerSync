@@ -1,0 +1,451 @@
+/* =========================================================
+   CareerSync Design System — Light Theme Tokens
+   Premium enterprise SaaS · Light only
+   Injected before pages/styles.css via sidebar_ui.py
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  /* -------------------------------------------------------
+     Brand / Primary
+     ------------------------------------------------------- */
+  --pg-primary-50: #eff6ff;
+  --pg-primary-100: #dbeafe;
+  --pg-primary-200: #bfdbfe;
+  --pg-primary-300: #93c5fd;
+  --pg-primary-400: #60a5fa;
+  --pg-primary-500: #3b82f6;
+  --pg-primary-600: #2563eb; /* Primary */
+  --pg-primary-700: #1d4ed8;
+  --pg-primary-800: #1e40af;
+  --pg-primary-900: #1e3a8a;
+
+  --pg-primary: var(--pg-primary-600);
+  --pg-primary-hover: var(--pg-primary-700);
+  --pg-primary-active: var(--pg-primary-800);
+  --pg-primary-soft: var(--pg-primary-50);
+  --pg-primary-muted: var(--pg-primary-100);
+  --pg-on-primary: #ffffff;
+
+  /* -------------------------------------------------------
+     Neutral
+     ------------------------------------------------------- */
+  --pg-neutral-0: #ffffff;
+  --pg-neutral-50: #f8fafc;
+  --pg-neutral-100: #f1f5f9;
+  --pg-neutral-200: #e2e8f0;
+  --pg-neutral-300: #cbd5e1;
+  --pg-neutral-400: #94a3b8;
+  --pg-neutral-500: #64748b;
+  --pg-neutral-600: #475569;
+  --pg-neutral-700: #334155;
+  --pg-neutral-800: #1e293b;
+  --pg-neutral-900: #0f172a;
+  --pg-neutral-950: #020617;
+
+  /* -------------------------------------------------------
+     Semantic — Success
+     ------------------------------------------------------- */
+  --pg-success-50: #f0fdf4;
+  --pg-success-100: #dcfce7;
+  --pg-success-500: #22c55e;
+  --pg-success-600: #16a34a; /* Success */
+  --pg-success-700: #15803d;
+  --pg-success: var(--pg-success-600);
+  --pg-success-soft: var(--pg-success-50);
+  --pg-success-border: #bbf7d0;
+  --pg-on-success: #ffffff;
+
+  /* -------------------------------------------------------
+     Semantic — Warning
+     ------------------------------------------------------- */
+  --pg-warning-50: #fffbeb;
+  --pg-warning-100: #fef3c7;
+  --pg-warning-500: #f59e0b; /* Warning */
+  --pg-warning-600: #d97706;
+  --pg-warning-700: #b45309;
+  --pg-warning: var(--pg-warning-500);
+  --pg-warning-soft: var(--pg-warning-50);
+  --pg-warning-border: #fde68a;
+  --pg-on-warning: #ffffff;
+
+  /* -------------------------------------------------------
+     Semantic — Error
+     ------------------------------------------------------- */
+  --pg-error-50: #fef2f2;
+  --pg-error-100: #fee2e2;
+  --pg-error-500: #ef4444;
+  --pg-error-600: #dc2626; /* Error */
+  --pg-error-700: #b91c1c;
+  --pg-error: var(--pg-error-600);
+  --pg-error-soft: var(--pg-error-50);
+  --pg-error-border: #fecaca;
+  --pg-on-error: #ffffff;
+
+  /* -------------------------------------------------------
+     Semantic — Info
+     ------------------------------------------------------- */
+  --pg-info-50: #eff6ff;
+  --pg-info-100: #dbeafe;
+  --pg-info-500: #3b82f6;
+  --pg-info-600: #2563eb;
+  --pg-info-700: #1d4ed8;
+  --pg-info: var(--pg-info-600);
+  --pg-info-soft: var(--pg-info-50);
+  --pg-info-border: #bfdbfe;
+  --pg-on-info: #ffffff;
+
+  /* -------------------------------------------------------
+     Background / Surface
+     ------------------------------------------------------- */
+  --pg-bg: #f8fafc; /* App background */
+  --pg-bg-subtle: var(--pg-neutral-100);
+  --pg-bg-muted: var(--pg-neutral-100);
+  --pg-surface: #ffffff; /* Cards / panels */
+  --pg-surface-raised: #ffffff;
+  --pg-surface-sunken: var(--pg-neutral-50);
+  --pg-surface-overlay: rgba(15, 23, 42, 0.4);
+
+  /* -------------------------------------------------------
+     Text
+     ------------------------------------------------------- */
+  --pg-text-heading: #0f172a;
+  --pg-text-body: #334155;
+  --pg-text-muted: #64748b;
+  --pg-text-subtle: #94a3b8;
+  --pg-text-disabled: #cbd5e1;
+  --pg-text-inverse: #ffffff;
+  --pg-text-link: var(--pg-primary-600);
+  --pg-text-link-hover: var(--pg-primary-700);
+
+  /* Footer (dark gradient surface — WCAG AA on neutral-900 / primary-900) */
+  --pg-footer-text-heading: var(--pg-primary-200);
+  --pg-footer-text-accent: var(--pg-primary-100);
+  --pg-footer-text-body: var(--pg-neutral-200);
+  --pg-footer-text-muted: var(--pg-neutral-300);
+  --pg-footer-text-link: var(--pg-neutral-200);
+  --pg-footer-text-link-hover: var(--pg-text-inverse);
+  --pg-footer-text-link-visited: var(--pg-primary-100);
+  --pg-footer-text-pill: var(--pg-primary-50);
+
+  /* -------------------------------------------------------
+     Borders
+     ------------------------------------------------------- */
+  --pg-border: #e2e8f0;
+  --pg-border-subtle: #f1f5f9;
+  --pg-border-strong: #cbd5e1;
+  --pg-border-focus: var(--pg-primary-600);
+  --pg-border-success: var(--pg-success-border);
+  --pg-border-warning: var(--pg-warning-border);
+  --pg-border-error: var(--pg-error-border);
+  --pg-border-info: var(--pg-info-border);
+
+  /* -------------------------------------------------------
+     Typography — Family
+     ------------------------------------------------------- */
+  --pg-font-sans: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --pg-font-mono: "SF Mono", "Consolas", "Liberation Mono", Menlo, monospace;
+
+  /* -------------------------------------------------------
+     Typography — Size scale
+     ------------------------------------------------------- */
+  --pg-text-2xs: 0.6875rem; /* 11px — overline / labels */
+  --pg-text-xs: 0.75rem; /* 12px — caption */
+  --pg-text-sm: 0.875rem; /* 14px — body small */
+  --pg-text-md: 1rem; /* 16px — body */
+  --pg-text-base: var(--pg-text-md); /* alias */
+  --pg-text-lg: 1.125rem; /* 18px — body large / h4 */
+  --pg-text-xl: 1.25rem; /* 20px — h3 */
+  --pg-text-2xl: 1.5rem; /* 24px — h2 */
+  --pg-text-3xl: 1.875rem; /* 30px — page title */
+  --pg-text-4xl: 2.25rem; /* 36px — display */
+  --pg-text-5xl: 3rem; /* 48px — hero */
+  --pg-text-icon-lg: 1.45rem; /* decorative icon / emoji */
+  --pg-text-icon-md: 1.35rem;
+  --pg-text-icon-sm: 1.25rem;
+
+  /* -------------------------------------------------------
+     Typography — Line height
+     ------------------------------------------------------- */
+  --pg-leading-none: 1;
+  --pg-leading-tight: 1.25;
+  --pg-leading-snug: 1.375;
+  --pg-leading-normal: 1.5;
+  --pg-leading-relaxed: 1.625;
+
+  /* -------------------------------------------------------
+     Typography — Font weight
+     ------------------------------------------------------- */
+  --pg-font-light: 300;
+  --pg-font-regular: 400;
+  --pg-font-medium: 500;
+  --pg-font-semibold: 600;
+  --pg-font-bold: 700;
+  --pg-font-extrabold: 800;
+
+  /* -------------------------------------------------------
+     Typography — Letter spacing
+     ------------------------------------------------------- */
+  --pg-tracking-tightest: -0.02em;
+  --pg-tracking-tight: -0.01em;
+  --pg-tracking-normal: 0;
+  --pg-tracking-wide: 0.02em;
+  --pg-tracking-wider: 0.08em; /* overline / section labels */
+
+  /* -------------------------------------------------------
+     Typography — Semantic roles (hero reference)
+     ------------------------------------------------------- */
+  --pg-type-hero-size: clamp(2rem, 4vw, var(--pg-text-5xl));
+  --pg-type-hero-weight: var(--pg-font-bold);
+  --pg-type-hero-leading: var(--pg-leading-tight);
+  --pg-type-hero-tracking: var(--pg-tracking-tight);
+
+  --pg-type-page-title-size: clamp(1.25rem, 1rem + 0.6vw, var(--pg-text-2xl));
+  --pg-type-page-title-weight: var(--pg-font-bold);
+  --pg-type-page-title-leading: var(--pg-leading-tight);
+  --pg-type-page-title-tracking: var(--pg-tracking-tight);
+
+  --pg-type-page-hero-size: var(--pg-text-3xl);
+  --pg-type-page-hero-weight: var(--pg-font-bold);
+  --pg-type-page-hero-leading: var(--pg-leading-tight);
+  --pg-type-page-hero-tracking: var(--pg-tracking-tight);
+
+  --pg-type-section-title-size: var(--pg-text-2xl);
+  --pg-type-section-title-weight: var(--pg-font-semibold);
+  --pg-type-section-title-leading: var(--pg-leading-tight);
+  --pg-type-section-title-tracking: var(--pg-tracking-tight);
+
+  --pg-type-card-title-size: var(--pg-text-lg);
+  --pg-type-card-title-weight: var(--pg-font-semibold);
+  --pg-type-card-title-leading: var(--pg-leading-snug);
+  --pg-type-card-title-tracking: var(--pg-tracking-normal);
+
+  --pg-type-kpi-size: var(--pg-text-3xl);
+  --pg-type-kpi-weight: var(--pg-font-bold);
+  --pg-type-kpi-leading: var(--pg-leading-tight);
+  --pg-type-kpi-tracking: var(--pg-tracking-tight);
+
+  --pg-type-kpi-sm-size: var(--pg-text-xl);
+  --pg-type-kpi-sm-weight: var(--pg-font-bold);
+  --pg-type-kpi-sm-leading: var(--pg-leading-tight);
+  --pg-type-kpi-sm-tracking: var(--pg-tracking-tight);
+
+  --pg-type-label-size: var(--pg-text-sm);
+  --pg-type-label-weight: var(--pg-font-medium);
+  --pg-type-label-leading: var(--pg-leading-normal);
+  --pg-type-label-tracking: var(--pg-tracking-normal);
+
+  --pg-type-overline-size: var(--pg-text-2xs);
+  --pg-type-overline-weight: var(--pg-font-semibold);
+  --pg-type-overline-leading: var(--pg-leading-normal);
+  --pg-type-overline-tracking: var(--pg-tracking-wider);
+
+  --pg-type-badge-size: var(--pg-text-xs);
+  --pg-type-badge-weight: var(--pg-font-semibold);
+  --pg-type-badge-leading: var(--pg-leading-snug);
+  --pg-type-badge-tracking: var(--pg-tracking-wide);
+
+  --pg-type-body-size: var(--pg-text-md);
+  --pg-type-body-weight: var(--pg-font-regular);
+  --pg-type-body-leading: var(--pg-leading-normal);
+  --pg-type-body-tracking: var(--pg-tracking-normal);
+
+  --pg-type-body-lg-size: var(--pg-text-lg);
+  --pg-type-body-lg-weight: var(--pg-font-regular);
+  --pg-type-body-lg-leading: var(--pg-leading-relaxed);
+  --pg-type-body-lg-tracking: var(--pg-tracking-normal);
+
+  --pg-type-body-sm-size: var(--pg-text-sm);
+  --pg-type-body-sm-weight: var(--pg-font-regular);
+  --pg-type-body-sm-leading: var(--pg-leading-relaxed);
+  --pg-type-body-sm-tracking: var(--pg-tracking-normal);
+
+  --pg-type-caption-size: var(--pg-text-xs);
+  --pg-type-caption-weight: var(--pg-font-medium);
+  --pg-type-caption-leading: var(--pg-leading-normal);
+  --pg-type-caption-tracking: var(--pg-tracking-normal);
+
+  --pg-type-small-size: var(--pg-text-sm);
+  --pg-type-small-weight: var(--pg-font-medium);
+  --pg-type-small-leading: var(--pg-leading-normal);
+  --pg-type-small-tracking: var(--pg-tracking-normal);
+
+  --pg-type-button-size: var(--pg-text-sm);
+  --pg-type-button-weight: var(--pg-font-semibold);
+  --pg-type-button-leading: 1.2;
+  --pg-type-button-tracking: var(--pg-tracking-wide);
+
+  --pg-type-input-label-size: var(--pg-text-sm);
+  --pg-type-input-label-weight: var(--pg-font-medium);
+  --pg-type-input-label-leading: var(--pg-leading-snug);
+  --pg-type-input-label-tracking: var(--pg-tracking-normal);
+
+  --pg-type-nav-size: var(--pg-text-sm);
+  --pg-type-nav-weight: var(--pg-font-medium);
+  --pg-type-nav-leading: var(--pg-leading-snug);
+  --pg-type-nav-tracking: var(--pg-tracking-wide);
+
+  --pg-type-sidebar-brand-size: var(--pg-text-md);
+  --pg-type-sidebar-brand-weight: var(--pg-font-bold);
+  --pg-type-sidebar-brand-leading: var(--pg-leading-tight);
+  --pg-type-sidebar-brand-tracking: var(--pg-tracking-tight);
+
+  --pg-type-table-head-size: var(--pg-text-xs);
+  --pg-type-table-head-weight: var(--pg-font-semibold);
+  --pg-type-table-head-leading: var(--pg-leading-snug);
+  --pg-type-table-head-tracking: var(--pg-tracking-wider);
+
+  --pg-type-table-cell-size: var(--pg-text-sm);
+  --pg-type-table-cell-weight: var(--pg-font-regular);
+  --pg-type-table-cell-leading: var(--pg-leading-normal);
+  --pg-type-table-cell-tracking: var(--pg-tracking-normal);
+
+  --pg-type-modal-title-size: var(--pg-text-xl);
+  --pg-type-modal-title-weight: var(--pg-font-semibold);
+  --pg-type-modal-title-leading: var(--pg-leading-snug);
+  --pg-type-modal-title-tracking: var(--pg-tracking-tight);
+
+  --pg-type-dialog-size: var(--pg-type-body-sm-size);
+  --pg-type-dialog-weight: var(--pg-type-body-sm-weight);
+  --pg-type-dialog-leading: var(--pg-type-body-sm-leading);
+  --pg-type-dialog-tracking: var(--pg-type-body-sm-tracking);
+
+  /* -------------------------------------------------------
+     Spacing scale (4px base)
+     ------------------------------------------------------- */
+  --pg-space-0: 0;
+  --pg-space-1: 0.25rem; /* 4px */
+  --pg-space-2: 0.5rem; /* 8px */
+  --pg-space-3: 0.75rem; /* 12px */
+  --pg-space-4: 1rem; /* 16px */
+  --pg-space-5: 1.25rem; /* 20px */
+  --pg-space-6: 1.5rem; /* 24px */
+  --pg-space-7: 1.75rem; /* 28px */
+  --pg-space-8: 2rem; /* 32px */
+  --pg-space-10: 2.5rem; /* 40px */
+  --pg-space-12: 3rem; /* 48px */
+  --pg-space-16: 4rem; /* 64px */
+  --pg-space-20: 5rem; /* 80px */
+  --pg-space-24: 6rem; /* 96px */
+
+  /* -------------------------------------------------------
+     Border radius scale
+     ------------------------------------------------------- */
+  --pg-radius-none: 0;
+  --pg-radius-sm: 0.375rem; /* 6px */
+  --pg-radius-md: 0.5rem; /* 8px */
+  --pg-radius-lg: 0.75rem; /* 12px */
+  --pg-radius-xl: 1rem; /* 16px */
+  --pg-radius-2xl: 1.25rem; /* 20px */
+  --pg-radius-full: 9999px;
+
+  /* -------------------------------------------------------
+     Shadow system (light, soft enterprise)
+     ------------------------------------------------------- */
+  --pg-shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --pg-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --pg-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.04);
+  --pg-shadow-lg: 0 12px 24px rgba(15, 23, 42, 0.08), 0 4px 8px rgba(15, 23, 42, 0.04);
+  --pg-shadow-xl: 0 20px 40px rgba(15, 23, 42, 0.1), 0 8px 16px rgba(15, 23, 42, 0.05);
+  --pg-shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  --pg-shadow-none: none;
+
+  /* -------------------------------------------------------
+     Motion
+     ------------------------------------------------------- */
+  --pg-duration-fast: 150ms;
+  --pg-duration-normal: 200ms;
+  --pg-duration-slow: 300ms;
+  --pg-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --pg-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  /* -------------------------------------------------------
+     Layout
+     ------------------------------------------------------- */
+  --pg-sidebar-width: 16.5rem;
+  --pg-content-max: 72rem;
+  --pg-z-base: 0;
+  --pg-z-dropdown: 100;
+  --pg-z-sticky: 200;
+  --pg-z-overlay: 300;
+  --pg-z-modal: 400;
+
+  /* -------------------------------------------------------
+     Sidebar aliases (consumed by pages/styles.css)
+     Light theme only — maps to design tokens
+     ------------------------------------------------------- */
+  --pg-sidebar-bg: var(--pg-bg);
+  --pg-sidebar-bg-elevated: var(--pg-surface);
+  --pg-sidebar-border: var(--pg-border);
+  --pg-sidebar-text: var(--pg-text-heading);
+  --pg-sidebar-muted: var(--pg-text-muted);
+  --pg-sidebar-accent: var(--pg-primary);
+  --pg-sidebar-accent-soft: rgba(37, 99, 235, 0.1);
+  --pg-sidebar-accent-strong: var(--pg-primary-700);
+  --pg-sidebar-hover: rgba(15, 23, 42, 0.04);
+  --pg-sidebar-radius: var(--pg-radius-lg);
+  --pg-sidebar-font: var(--pg-font-sans);
+}
+
+/* =========================================================
+   Foundation — Light theme only (locked)
+   ========================================================= */
+
+html {
+  color-scheme: light only;
+}
+
+html,
+body,
+.stApp,
+.stApp[data-theme="dark"],
+html[data-theme="dark"] .stApp,
+[data-theme="dark"] .stApp {
+  font-family: var(--pg-font-sans) !important;
+  color: var(--pg-text-body);
+  background-color: var(--pg-bg) !important;
+}
+
+.stApp [data-testid="stAppViewContainer"],
+.stApp[data-theme="dark"] [data-testid="stAppViewContainer"] {
+  background-color: var(--pg-bg) !important;
+}
+
+.stApp [data-testid="stHeader"] {
+  background-color: transparent !important;
+}
+
+/* If Streamlit ever sets dark data-theme, keep our light tokens */
+html[data-theme="dark"],
+.stApp[data-theme="dark"],
+[data-theme="dark"] {
+  color-scheme: light only;
+}
+
+/* Legacy color utilities — typography roles live in typography.css */
+.pg-text-heading {
+  color: var(--pg-text-heading);
+}
+
+.pg-text-body {
+  color: var(--pg-text-body);
+}
+
+.pg-text-muted {
+  color: var(--pg-text-muted);
+}
+
+.pg-surface {
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-lg);
+  box-shadow: var(--pg-shadow-xs);
+}
+
+.pg-surface-raised {
+  background: var(--pg-surface-raised);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-lg);
+  box-shadow: var(--pg-shadow-sm);
+}
