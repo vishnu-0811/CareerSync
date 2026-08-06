@@ -413,7 +413,7 @@ _FOOTER_LINKS: tuple[tuple[str, str], ...] = (
 
 def _footer_nav_links() -> str:
     return "".join(
-        f'<a class="pg-footer-link" href="{escape(href, quote=True)}">{escape(label)}</a>'
+        f'<a class="pg-footer-link" href="{escape(href, quote=True)}" target="_parent">{escape(label)}</a>'
         for label, href in _FOOTER_LINKS
     )
 
