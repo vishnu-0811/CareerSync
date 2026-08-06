@@ -454,7 +454,7 @@ def render_app_footer() -> None:
             </div>
             <div class="pg-footer-bottom">
               <p class="pg-footer-meta">
-                &copy; 2025 {escape(APP_NAME)} &middot; AI-powered career intelligence
+                &copy; 2026 {escape(APP_NAME)} &middot; AI-powered career intelligence
               </p>
             </div>
           </div>
