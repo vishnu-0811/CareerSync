@@ -46,38 +46,36 @@ APP_NAME = "CareerSync"
 APP_TAGLINE = "Where AI Meets Career Success"
 MAIN_PAGE_LABEL = "Main"
 
-_BRAND_MARK_SVG = (
-    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" '
-    'aria-hidden="true" focusable="false">'
-    '<path d="M12 3l2.2 4.6L19 9l-3.6 3.2L16.4 18 12 15.6 7.6 18l1-5.8L5 9l4.8-1.4L12 3z" '
-    'fill="currentColor" opacity="0.95"/>'
-    "</svg>"
-)
-
-_SIDEBAR_LOGO_CANDIDATES = (
-    _ROOT / "static" / "careersync-logo.png",
-    _ROOT / "static" / "careersync-ai-logo.png",
-)
+_BRAND_LOGO_PATH = _ROOT / "static" / "careersync-logo.png"
+_BRAND_LOGO_FALLBACK = _ROOT / "static" / "careersync-ai-logo.png"
+_BRAND_LOGO_CANDIDATES = (_BRAND_LOGO_PATH, _BRAND_LOGO_FALLBACK)
 
 
 @lru_cache(maxsize=8)
-def brand_logo_html(css_class: str = "pg-sidebar-brand-logo") -> str:
-    """Inline the brand logo so Streamlit markdown does not strip external img URLs."""
-    logo_path = next((path for path in _SIDEBAR_LOGO_CANDIDATES if path.is_file()), None)
+def brand_logo_html(css_class: str = "pg-brand-logo") -> str:
+    """Inline the official CareerSync logo (shared asset, location-specific CSS class)."""
+    logo_path = next((path for path in _BRAND_LOGO_CANDIDATES if path.is_file()), None)
+    alt = f"{APP_NAME} logo"
     if logo_path is None:
-        return _BRAND_MARK_SVG
+        return (
+            f'<img class="pg-brand-logo {css_class}" '
+            f'alt="{escape(alt)}" decoding="async" />'
+        )
 
     encoded = base64.b64encode(logo_path.read_bytes()).decode("ascii")
     data_uri = f"data:image/png;base64,{encoded}"
     return (
-        f'<span class="{css_class}" role="img" '
-        f'aria-label="{escape(APP_NAME)} logo" '
-        f'style="background-image:url({data_uri})"></span>'
+        f'<img class="pg-brand-logo {css_class}" '
+        f'src="{data_uri}" alt="{escape(alt)}" decoding="async" />'
     )
 
 
 def _sidebar_brand_logo_html() -> str:
     return brand_logo_html("pg-sidebar-brand-logo")
+
+
+def _footer_brand_logo_html() -> str:
+    return brand_logo_html("pg-footer-brand-logo")
 
 _STATIC_CSS_HREF = "/app/static/careersync.css"
 
@@ -207,29 +205,13 @@ section[data-testid="stSidebar"] {{
   border-radius: var(--pg-radius-full);
   background: var(--pg-sidebar-accent);
 }}
-.pg-home-brand-mark svg {{
-  width: 2.25rem;
-  height: 2.25rem;
-  max-width: 100%;
-}}
-.pg-sidebar-brand-mark svg {{
-  width: 1.25rem;
-  height: 1.25rem;
-  max-width: 100%;
-}}
-.pg-sidebar-brand-logo {{
+.pg-brand-logo {{
+  display: block;
   width: 100%;
   height: 100%;
   max-width: 100%;
-  display: block;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}}
-.pg-footer-logo-mark svg {{
-  width: 1.15rem;
-  height: 1.15rem;
-  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
 }}
 """
 
@@ -246,7 +228,7 @@ def _asset_revision() -> str:
         _COMPONENTS_PATH,
         _STYLES_PATH,
         Path(__file__),
-        *_SIDEBAR_LOGO_CANDIDATES,
+        *_BRAND_LOGO_CANDIDATES,
     ):
         try:
             stat = path.stat()
@@ -438,7 +420,7 @@ def _footer_nav_links() -> str:
 
 def render_app_footer() -> None:
     """Render the shared application footer (presentational only)."""
-    render_html(
+    st.html(
         f"""
         <footer class="pg-footer" role="contentinfo">
           <div class="pg-footer-accent" aria-hidden="true"></div>
@@ -446,7 +428,7 @@ def render_app_footer() -> None:
             <div class="pg-footer-grid">
               <div class="pg-footer-brand-col">
                 <div class="pg-footer-logo">
-                  <span class="pg-footer-logo-mark" aria-hidden="true">{_BRAND_MARK_SVG}</span>
+                  <span class="pg-footer-logo-mark" aria-hidden="true">{_footer_brand_logo_html()}</span>
                   <span class="pg-footer-logo-text">{escape(APP_NAME)}</span>
                 </div>
                 <p class="pg-footer-tagline">{escape(APP_TAGLINE)}</p>

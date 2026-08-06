@@ -225,12 +225,6 @@
 }
 
 .pg-home-ai-card-logo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: calc(var(--pg-radius-lg) - 2px);
 }
 
@@ -808,12 +802,18 @@
   width: 2.5rem;
   height: 2.5rem;
   margin-bottom: var(--pg-space-3);
+  padding: 0.2rem;
   border-radius: var(--pg-radius-lg);
   background: var(--pg-primary-soft);
   border: 1px solid color-mix(in srgb, var(--pg-primary) 18%, transparent);
   font-size: var(--pg-text-icon-sm);
   line-height: var(--pg-leading-none);
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.pg-home-benefit-logo {
+  border-radius: calc(var(--pg-radius-lg) - 2px);
 }
 
 .pg-home-benefit-title {
@@ -901,12 +901,6 @@
 }
 
 .pg-home-cta-logo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: calc(var(--pg-radius-xl) - 4px);
 }
 

@@ -648,12 +648,6 @@ section[data-testid="stSidebar"] button[kind="header"]:hover {
 }
 
 .pg-sidebar-brand-logo {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: calc(var(--pg-radius-lg) - 2px);
 }
 
@@ -948,11 +942,23 @@ section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarN
 /* ---------------------------------------------------------
    App footer (layout chrome)
    --------------------------------------------------------- */
-/* Guard brand SVGs if the external stylesheet fails to load */
-.pg-home-brand-mark svg,
-.pg-sidebar-brand-mark svg,
+/* Guard brand logos if the external stylesheet fails to load */
+.pg-brand-logo,
 .pg-sidebar-brand-logo,
-.pg-footer-logo-mark svg {
+.pg-footer-brand-logo,
+.pg-home-ai-card-logo,
+.pg-home-cta-logo,
+.pg-home-benefit-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.pg-home-brand-mark svg,
+.pg-sidebar-brand-mark svg {
   max-width: 100%;
   flex-shrink: 0;
 }
@@ -1014,15 +1020,17 @@ section[data-testid="stSidebar"][aria-expanded="false"] [data-testid="stSidebarN
   justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
+  padding: 0.2rem;
   border-radius: var(--pg-radius-lg);
-  background: color-mix(in srgb, var(--pg-primary-500) 22%, transparent);
-  border: 1px solid color-mix(in srgb, var(--pg-primary-300) 35%, transparent);
-  color: var(--pg-primary-200);
+  background: var(--pg-sidebar-bg-elevated);
+  border: 1px solid var(--pg-sidebar-border);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: var(--pg-shadow-xs);
 }
 
-.pg-footer-logo-mark svg {
-  width: 1.15rem;
-  height: 1.15rem;
+.pg-footer-brand-logo {
+  border-radius: calc(var(--pg-radius-lg) - 2px);
 }
 
 .pg-footer-logo-text {

@@ -372,7 +372,7 @@ st.markdown(
           </p>
         </article>
         <article class="pg-home-benefit">
-          <div class="pg-home-benefit-icon" aria-hidden="true">🤖</div>
+          <div class="pg-home-benefit-icon" aria-hidden="true">{brand_logo_html("pg-home-benefit-logo")}</div>
           <h3 class="pg-home-benefit-title">AI-Powered Career Guidance</h3>
           <p class="pg-home-benefit-desc">
             Machine Learning algorithms evaluate your profile and suggest suitable career paths based on
