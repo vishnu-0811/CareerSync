@@ -71,7 +71,7 @@ st.markdown(
             </li>
           </ul>
           <div class="pg-home-hero-actions">
-            <a class="pg-btn pg-btn-primary pg-home-hero-cta" href="/1_Resume_Classifier" target="_parent">
+            <a class="pg-btn pg-btn-primary pg-home-hero-cta" href="/1_Resume_Classifier" target="_self">
               Analyze Resume
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
@@ -459,7 +459,7 @@ st.markdown(
             Classify your resume into suitable career domains using supervised Machine Learning
             algorithms.
           </p>
-          <a class="pg-home-explore-cta" href="/1_Resume_Classifier" target="_parent">
+          <a class="pg-home-explore-cta" href="/1_Resume_Classifier" target="_self">
             <span>Launch Module</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
@@ -475,7 +475,7 @@ st.markdown(
             Compare your resume with a job description and receive a compatibility score along with
             skill gap analysis.
           </p>
-          <a class="pg-home-explore-cta" href="/2_Job_Fit_Analyzer" target="_parent">
+          <a class="pg-home-explore-cta" href="/2_Job_Fit_Analyzer" target="_self">
             <span>Analyze Job Fit</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
@@ -490,7 +490,7 @@ st.markdown(
           <p class="pg-home-explore-card-desc">
             Explore interactive charts, recommendation insights, and prediction results.
           </p>
-          <a class="pg-home-explore-cta" href="/4_Dashboard" target="_parent">
+          <a class="pg-home-explore-cta" href="/4_Dashboard" target="_self">
             <span>View Dashboard</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>

@@ -273,7 +273,14 @@ def _inject_persistent_styles(stylesheet_version: str) -> None:
         f"""<script>
 (function () {{
   var payload = {payload};
-  var doc = window.parent && window.parent.document ? window.parent.document : document;
+  var doc = document;
+  try {{
+    if (window.parent && window.parent.document) {{
+      doc = window.parent.document;
+    }}
+  }} catch (e) {{
+    // CORS fallback
+  }}
 
   function upsertStyle(id, css) {{
     var node = doc.getElementById(id);
@@ -315,8 +322,8 @@ def _inject_persistent_styles(stylesheet_version: str) -> None:
     }});
   }}
 
-  function setupCustomNavigation() {
-    function handleNavClick(e) {
+  function setupCustomNavigation() {{
+    function handleNavClick(e) {{
       var anchor = e.target.closest('a[href]');
       if (!anchor) return;
 
@@ -324,42 +331,44 @@ def _inject_persistent_styles(stylesheet_version: str) -> None:
       if (!href) return;
 
       var targetPage = null;
-      if (href.indexOf("1_Resume_Classifier") !== -1) {
+      if (href.indexOf("1_Resume_Classifier") !== -1) {{
         targetPage = "1_Resume_Classifier";
-      } else if (href.indexOf("2_Job_Fit_Analyzer") !== -1) {
+      }} else if (href.indexOf("2_Job_Fit_Analyzer") !== -1) {{
         targetPage = "2_Job_Fit_Analyzer";
-      } else if (href.indexOf("4_Dashboard") !== -1) {
+      }} else if (href.indexOf("3_Resume_Cluster") !== -1) {{
+        targetPage = "3_Resume_Cluster";
+      }} else if (href.indexOf("4_Dashboard") !== -1) {{
         targetPage = "4_Dashboard";
-      }
+      }}
 
-      if (targetPage) {
+      if (targetPage) {{
         e.preventDefault();
         e.stopPropagation();
 
         var targetLink = null;
         var sidebarLinks = doc.querySelectorAll('[data-testid="stSidebarNavLink"]');
-        for (var i = 0; i < sidebarLinks.length; i++) {
+        for (var i = 0; i < sidebarLinks.length; i++) {{
           var sLink = sidebarLinks[i];
           var sHref = sLink.getAttribute("href") || "";
-          if (sHref.indexOf(targetPage) !== -1) {
+          if (sHref.indexOf(targetPage) !== -1) {{
             targetLink = sLink;
             break;
-          }
-        }
+          }}
+        }}
 
-        if (targetLink) {
+        if (targetLink) {{
           targetLink.click();
-        } else {
-          window.parent.location.href = href;
-        }
-      }
-    }
+        }} else {{
+          window.location.href = href;
+        }}
+      }}
+    }}
 
     doc.removeEventListener("click", handleNavClick);
     doc.addEventListener("click", handleNavClick);
     document.removeEventListener("click", handleNavClick);
     document.addEventListener("click", handleNavClick);
-  }
+  }}
 
   upsertStyle("pg-critical-styles", payload.critical);
   upsertStylesheet("pg-app-stylesheet-link", payload.href);
@@ -460,7 +469,7 @@ _FOOTER_LINKS: tuple[tuple[str, str], ...] = (
 
 def _footer_nav_links() -> str:
     return "".join(
-        f'<a class="pg-footer-link" href="{escape(href, quote=True)}" target="_parent">{escape(label)}</a>'
+        f'<a class="pg-footer-link" href="{escape(href, quote=True)}" target="_self">{escape(label)}</a>'
         for label, href in _FOOTER_LINKS
     )
 
