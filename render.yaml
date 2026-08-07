@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: careersync
+    env: docker
+    branch: main
+    dockerfilePath: Dockerfile
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: PYTHONUNBUFFERED
+        value: "1"

@@ -1,0 +1,38 @@
+# Python environment
+.venv
+venv
+ENV/
+env/
+.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
+
+# Model artifacts / large binaries
+*.h5
+*.ckpt
+*.pt
+wheels/
+
+# Node
+node_modules/
